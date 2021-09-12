@@ -1,0 +1,8 @@
+db:
+  image: mysql:8.0
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_DATABASE: vending_machine_db
+    MYSQL_ROOT_USER: root
+    MYSQL_ROOT_PASSWORD: root
