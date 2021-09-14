@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import CoinBoxService from "services/CoinBox.service";
 import "./App.css";
 
 type CoinBox = {
@@ -15,24 +16,22 @@ function App() {
   const [coinBox, setCoinBox] = useState<CoinBox>();
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/coin-box/").then((res) => {
+    CoinBoxService.get().then((res: any) => {
       console.log(res.data);
       setCoinBox(res.data);
     });
   }, []);
 
   const onInsertButtonClick = (value: number) => {
-    axios
-      .patch("http://localhost:8080/api/coin-box/insert/" + value)
-      .then((res) => {
-        console.log(res.data);
-        setCoinBox(res.data);
-        console.log(value + "円が投入されました");
-      });
+    CoinBoxService.insert(value).then((res: any) => {
+      console.log(res.data);
+      setCoinBox(res.data);
+      console.log(value + "円が投入されました");
+    });
   };
 
   const onReleaseButtonClick = () => {
-    axios.patch("http://localhost:8080/api/coin-box/release").then((res) => {
+    CoinBoxService.release().then((res: any) => {
       console.log(res.data);
       setCoinBox(res.data);
       console.log("おつり返却");

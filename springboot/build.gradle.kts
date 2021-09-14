@@ -1,14 +1,16 @@
+import com.moowork.gradle.node.npm.NpmTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
 	id("org.springframework.boot") version "2.5.4"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
+	id("com.moowork.node") version "1.3.1"
 	kotlin("jvm") version "1.5.21"
 	kotlin("plugin.spring") version "1.5.21"
 }
 
 group = "app"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.1"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -37,3 +39,12 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+task<NpmTask>("copyDir"){
+		copy {
+			from("./../react/build")
+			into("./build/resources/main/static")
+		}
+}
+
+tasks.getByName("build").dependsOn("copyDir")
