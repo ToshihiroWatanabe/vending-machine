@@ -22,6 +22,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
             // ...
             // 諸々の設定
             // ...
+            ?.csrf()?.disable()
             // ?.and()
             ?.cors()
             ?.configurationSource(getCorsConfigurationSource()) //CORS設定
