@@ -26,7 +26,15 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("mysql:mysql-connector-java")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+	testImplementation("org.junit.jupiter:junit-jupiter:5.8.0")
+	testImplementation("org.junit.jupiter:junit-jupiter-api")
+	testImplementation("io.mockk:mockk:1.12.0")
+	testImplementation("org.springframework.boot:spring-boot-starter-test") {
+		exclude(module = "junit")
+		exclude(module="junit-vintage-engine")
+		exclude(module = "mockito-core")
+	}
 }
 
 tasks.withType<KotlinCompile> {
