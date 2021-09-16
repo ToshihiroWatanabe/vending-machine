@@ -18,19 +18,22 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.springframework.boot:spring-boot-starter-web:2.5.4")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.5")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0")
-	implementation("org.springframework.boot:spring-boot-starter-security")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	runtimeOnly("mysql:mysql-connector-java")
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+	implementation("org.springframework.boot:spring-boot-starter-security:2.5.4")
+	developmentOnly("org.springframework.boot:spring-boot-devtools:2.5.4")
+	runtimeOnly("mysql:mysql-connector-java:8.0.25")
+	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
 	testImplementation("org.junit.jupiter:junit-jupiter:5.8.0")
-	testImplementation("org.junit.jupiter:junit-jupiter-api")
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.7.2")
 	testImplementation("io.mockk:mockk:1.12.0")
-	testImplementation("org.springframework.boot:spring-boot-starter-test") {
+	testImplementation("com.github.springtestdbunit:spring-test-dbunit:1.3.0")
+	testImplementation("org.dbunit:dbunit:2.7.2")
+	testImplementation("org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.2.0")
+	testImplementation("org.springframework.boot:spring-boot-starter-test:2.5.4") {
 		exclude(module = "junit")
 		exclude(module="junit-vintage-engine")
 		exclude(module = "mockito-core")
