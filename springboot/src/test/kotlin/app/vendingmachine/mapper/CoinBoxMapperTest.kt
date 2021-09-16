@@ -12,10 +12,10 @@ import org.springframework.test.context.TestPropertySource
 @DisplayName("CoinBoxテーブルのマッパークラスのテスト")
 class CoinBoxMapperTest(val coinBoxMapper: CoinBoxMapper) {
 
-    @Test
-    fun pass(){
-        assertEquals(0,0)
-    }
+//    @Test
+//    fun pass(){
+//        assertEquals(0,0)
+//    }
 
 //    @Test
 //    @ParameterizedTest

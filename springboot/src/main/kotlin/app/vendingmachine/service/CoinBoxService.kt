@@ -2,10 +2,19 @@ package app.vendingmachine.service
 
 import app.vendingmachine.mapper.CoinBoxMapper
 import app.vendingmachine.model.CoinBox
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class CoinBoxService(val coinBoxMapper: CoinBoxMapper) {
+class CoinBoxService @Autowired constructor(val coinBoxMapper: CoinBoxMapper) {
+
+    fun findAll():CoinBox{
+        return coinBoxMapper.findAll()
+    }
+
+    fun update(coinBox: CoinBox):Boolean{
+        return coinBoxMapper.update(coinBox)
+    }
 
     /**
      * お金を投入します。

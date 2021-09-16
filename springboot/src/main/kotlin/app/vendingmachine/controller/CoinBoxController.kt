@@ -3,20 +3,21 @@ package app.vendingmachine.controller
 import app.vendingmachine.mapper.CoinBoxMapper
 import app.vendingmachine.model.CoinBox
 import app.vendingmachine.service.CoinBoxService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/coin-box")
-class CoinBoxController(val coinBoxService: CoinBoxService, val coinBoxMapper: CoinBoxMapper) {
+class CoinBoxController @Autowired constructor(val coinBoxService: CoinBoxService) {
 
     @GetMapping("")
     fun findAll():CoinBox{
-        return coinBoxMapper.findAll()
+        return coinBoxService.findAll()
     }
 
     @PutMapping("")
     fun update(coinBox: CoinBox):Boolean{
-        return coinBoxMapper.update(coinBox)
+        return coinBoxService.update(coinBox)
     }
 
     /**
@@ -32,7 +33,7 @@ class CoinBoxController(val coinBoxService: CoinBoxService, val coinBoxMapper: C
      */
     @PatchMapping("/release")
     fun release(): CoinBox{
-        var coinBox = coinBoxMapper.findAll()
+        var coinBox = coinBoxService.findAll()
         val coinCount: Array<Int> = coinBoxService.calcChange(coinBox.deposit)
         coinBox.deposit = 0
         coinBox.left1000 -= coinCount[1]
@@ -40,7 +41,7 @@ class CoinBoxController(val coinBoxService: CoinBoxService, val coinBoxMapper: C
         coinBox.left100 -= coinCount[3]
         coinBox.left50 -= coinCount[4]
         coinBox.left10 -= coinCount[5]
-        coinBoxMapper.update(coinBox)
-        return coinBoxMapper.findAll()
+        coinBoxService.update(coinBox)
+        return coinBoxService.findAll()
     }
 }
