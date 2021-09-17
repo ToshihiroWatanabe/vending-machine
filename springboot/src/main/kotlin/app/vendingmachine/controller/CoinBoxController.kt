@@ -16,7 +16,7 @@ class CoinBoxController @Autowired constructor(val coinBoxService: CoinBoxServic
     }
 
     @PutMapping("")
-    fun update(coinBox: CoinBox):Boolean{
+    fun update(@RequestBody coinBox: CoinBox):Boolean{
         return coinBoxService.update(coinBox)
     }
 
