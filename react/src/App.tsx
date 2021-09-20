@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CoinBoxService from "services/CoinBox.service";
 import "./App.css";
@@ -12,8 +11,20 @@ type CoinBox = {
   left1000: number;
 };
 
+type Stock = {
+  id: number;
+  name: string;
+  temperature: string;
+  price: number;
+  quantity: number;
+};
+
 function App() {
   const [coinBox, setCoinBox] = useState<CoinBox>();
+  const [stocks, setStocks] = useState<Stock[]>([
+    { id: 1, name: "商品1", temperature: "cold", price: 140, quantity: 24 },
+    { id: 2, name: "商品2", temperature: "hot", price: 120, quantity: 24 },
+  ]);
 
   useEffect(() => {
     CoinBoxService.get().then((res: any) => {
@@ -41,6 +52,21 @@ function App() {
   return (
     <div className="App">
       <h1>自動販売機アプリ</h1>
+      {stocks.map((stock) => {
+        return (
+          <button>
+            {stock.name}
+            <br />
+            {stock.temperature === "hot"
+              ? "あたたかい"
+              : stock.temperature === "cold"
+              ? "つめたい"
+              : ""}
+            <br />
+            {stock.quantity !== 0 ? stock.price : "売り切れ"}
+          </button>
+        );
+      })}
       <p>投入金額: {coinBox?.deposit}円</p>
       <div>
         <button
