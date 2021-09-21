@@ -20,6 +20,10 @@ class CoinBoxService @Autowired constructor(val coinBoxMapper: CoinBoxMapper) {
      * お金を投入します。
      */
     fun insert(value: Int):CoinBox{
+        val coinBox:CoinBox = coinBoxMapper.findAll()
+        if(coinBox.deposit + value > 9999){
+            return coinBoxMapper.findAll()
+        }
         when (value) {
             10 -> {
                 coinBoxMapper.insert10()

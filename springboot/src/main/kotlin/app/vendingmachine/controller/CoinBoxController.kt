@@ -1,6 +1,5 @@
 package app.vendingmachine.controller
 
-import app.vendingmachine.mapper.CoinBoxMapper
 import app.vendingmachine.model.CoinBox
 import app.vendingmachine.service.CoinBoxService
 import org.springframework.beans.factory.annotation.Autowired
