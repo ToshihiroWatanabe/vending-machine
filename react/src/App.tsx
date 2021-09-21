@@ -54,7 +54,7 @@ function App() {
       <h1>自動販売機アプリ</h1>
       {stocks.map((stock) => {
         return (
-          <button>
+          <button key={stock.id}>
             {stock.name}
             <br />
             {stock.temperature === "hot"
