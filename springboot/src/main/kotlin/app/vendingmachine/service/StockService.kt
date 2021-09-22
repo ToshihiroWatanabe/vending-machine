@@ -8,19 +8,19 @@ import org.springframework.stereotype.Service
 @Service
 class StockService @Autowired constructor(val stockMapper: StockMapper) {
 
-    fun findAll():List<Stock>{
+    fun findAll(): List<Stock> {
         return stockMapper.findAll()
     }
 
-    fun create(stock: Stock):Boolean{
+    fun create(stock: Stock): Boolean {
         return stockMapper.create(stock)
     }
 
-    fun update(stock: Stock):Boolean{
+    fun update(stock: Stock): Boolean {
         return stockMapper.update(stock)
     }
 
-    fun delete(id: Int):Boolean{
+    fun delete(id: Int): Boolean {
         return stockMapper.delete(id)
     }
 }

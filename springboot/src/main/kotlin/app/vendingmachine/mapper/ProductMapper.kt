@@ -6,25 +6,33 @@ import org.apache.ibatis.annotations.*
 @Mapper
 interface ProductMapper {
 
-    @Select("""
+    @Select(
+        """
         select * from products
-    """)
-    fun findAll():List<Product>
+    """
+    )
+    fun findAll(): List<Product>
 
-    @Insert("""
+    @Insert(
+        """
         insert into products (id, name, temperature, price, vendor_name)
         values (#{id}, #{name}, #{temperature}, #{price}, #{vendorName})
-    """)
-    fun create(product: Product):Boolean
+    """
+    )
+    fun create(product: Product): Boolean
 
-    @Update("""
+    @Update(
+        """
         update products set name = #{name}, temperature = #{temperature}, price = #{price}, vendor_name = #{vendorName}
         where id = #{id}
-    """)
-    fun update(product: Product):Boolean
+    """
+    )
+    fun update(product: Product): Boolean
 
-    @Delete("""
+    @Delete(
+        """
         delete from products where id = #{id}
-    """)
-    fun delete(id: String):Boolean
+    """
+    )
+    fun delete(id: String): Boolean
 }

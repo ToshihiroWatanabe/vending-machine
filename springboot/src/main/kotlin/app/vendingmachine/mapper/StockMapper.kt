@@ -6,25 +6,33 @@ import org.apache.ibatis.annotations.*
 @Mapper
 interface StockMapper {
 
-    @Select("""
+    @Select(
+        """
         select * from stocks
-    """)
-    fun findAll():List<Stock>
+    """
+    )
+    fun findAll(): List<Stock>
 
-    @Insert("""
+    @Insert(
+        """
         insert into stocks (id, product_id, quantity)
         values (#{id}, #{productId}, #{quantity})
-    """)
-    fun create(stock: Stock):Boolean
+    """
+    )
+    fun create(stock: Stock): Boolean
 
-    @Update("""
+    @Update(
+        """
         update stocks set product_id = #{productId}, quantity = #{quantity}
         where id = #{id}
-    """)
-    fun update(stock: Stock):Boolean
+    """
+    )
+    fun update(stock: Stock): Boolean
 
-    @Delete("""
+    @Delete(
+        """
         delete from stocks where id = #{id}
-    """)
-    fun delete(id: Int):Boolean
+    """
+    )
+    fun delete(id: Int): Boolean
 }

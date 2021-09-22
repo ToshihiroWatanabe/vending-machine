@@ -7,25 +7,25 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/sales-history")
-class SalesHistoryController @Autowired constructor(val salesHistoryService: SalesHistoryService){
+class SalesHistoryController @Autowired constructor(val salesHistoryService: SalesHistoryService) {
 
     @GetMapping("")
-    fun findAll():List<SalesHistory>{
+    fun findAll(): List<SalesHistory> {
         return salesHistoryService.findAll()
     }
 
     @PostMapping("")
-    fun create(@RequestBody salesHistory: SalesHistory):Boolean{
+    fun create(@RequestBody salesHistory: SalesHistory): Boolean {
         return salesHistoryService.create(salesHistory)
     }
 
     @PutMapping("")
-    fun update(@RequestBody salesHistory: SalesHistory):Boolean{
+    fun update(@RequestBody salesHistory: SalesHistory): Boolean {
         return salesHistoryService.update(salesHistory)
     }
 
     @DeleteMapping("")
-    fun delete(@RequestBody id: String):Boolean{
+    fun delete(@RequestBody id: String): Boolean {
         return salesHistoryService.delete(id)
     }
 }

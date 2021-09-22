@@ -6,21 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class ProductService @Autowired constructor(val productMapper: ProductMapper){
+class ProductService @Autowired constructor(val productMapper: ProductMapper) {
 
-    fun findAll(): List<Product>{
+    fun findAll(): List<Product> {
         return productMapper.findAll()
     }
 
-    fun create(product: Product): Boolean{
+    fun create(product: Product): Boolean {
         return productMapper.create(product)
     }
 
-    fun update(product: Product): Boolean{
+    fun update(product: Product): Boolean {
         return productMapper.update(product)
     }
 
-    fun delete(id: String): Boolean{
+    fun delete(id: String): Boolean {
         return productMapper.delete(id)
     }
 }

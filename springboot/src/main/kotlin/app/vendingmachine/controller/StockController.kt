@@ -7,25 +7,25 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/stock")
-class StockController @Autowired constructor(val stockService: StockService){
+class StockController @Autowired constructor(val stockService: StockService) {
 
     @GetMapping("")
-    fun findAll():List<Stock>{
+    fun findAll(): List<Stock> {
         return stockService.findAll()
     }
 
     @PostMapping("")
-    fun create(@RequestBody stock: Stock):Boolean{
+    fun create(@RequestBody stock: Stock): Boolean {
         return stockService.create(stock)
     }
 
     @PutMapping("")
-    fun update(@RequestBody stock: Stock):Boolean{
+    fun update(@RequestBody stock: Stock): Boolean {
         return stockService.update(stock)
     }
 
     @DeleteMapping("")
-    fun delete(@RequestBody id:Int):Boolean{
+    fun delete(@RequestBody id: Int): Boolean {
         return stockService.delete(id)
     }
 }

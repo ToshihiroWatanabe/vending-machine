@@ -7,4 +7,4 @@ data class CoinBox(
     var left100: Int,
     var left500: Int,
     var left1000: Int
-    )
+)

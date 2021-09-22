@@ -6,25 +6,33 @@ import org.apache.ibatis.annotations.*
 @Mapper
 interface SalesHistoryMapper {
 
-    @Select("""
+    @Select(
+        """
         select * from sales_history
-    """)
-    fun findAll():List<SalesHistory>
+    """
+    )
+    fun findAll(): List<SalesHistory>
 
-    @Insert("""
+    @Insert(
+        """
         insert into sales_history (id, purchase_time, product_id) values (#{id}, #{purchaseTime}, #{productId})
-    """)
-    fun create(salesHistory: SalesHistory):Boolean
+    """
+    )
+    fun create(salesHistory: SalesHistory): Boolean
 
-    @Update("""
+    @Update(
+        """
         update sales_history set purchase_time = #{purchaseTime}, product_id = #{productId}
         where id = #{id}
-    """)
-    fun update(salesHistory: SalesHistory):Boolean
+    """
+    )
+    fun update(salesHistory: SalesHistory): Boolean
 
-    @Delete("""
+    @Delete(
+        """
         delete from sales_history
         where id = #{id}
-    """)
-    fun delete(id: String):Boolean
+    """
+    )
+    fun delete(id: String): Boolean
 }

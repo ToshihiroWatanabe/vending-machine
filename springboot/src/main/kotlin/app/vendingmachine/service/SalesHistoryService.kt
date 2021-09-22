@@ -6,21 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class SalesHistoryService @Autowired constructor(val salesHistoryMapper: SalesHistoryMapper){
+class SalesHistoryService @Autowired constructor(val salesHistoryMapper: SalesHistoryMapper) {
 
-    fun findAll():List<SalesHistory>{
+    fun findAll(): List<SalesHistory> {
         return salesHistoryMapper.findAll()
     }
 
-    fun create(salesHistory: SalesHistory):Boolean{
+    fun create(salesHistory: SalesHistory): Boolean {
         return salesHistoryMapper.create(salesHistory)
     }
 
-    fun update(salesHistory: SalesHistory):Boolean{
+    fun update(salesHistory: SalesHistory): Boolean {
         return salesHistoryMapper.update(salesHistory)
     }
 
-    fun delete(id:String):Boolean{
+    fun delete(id: String): Boolean {
         return salesHistoryMapper.delete(id)
     }
 }

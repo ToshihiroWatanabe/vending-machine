@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*
 class CoinBoxController @Autowired constructor(val coinBoxService: CoinBoxService) {
 
     @GetMapping("")
-    fun findAll():CoinBox{
+    fun findAll(): CoinBox {
         return coinBoxService.findAll()
     }
 
     @PutMapping("")
-    fun update(@RequestBody coinBox: CoinBox):Boolean{
+    fun update(@RequestBody coinBox: CoinBox): Boolean {
         return coinBoxService.update(coinBox)
     }
 
@@ -23,7 +23,7 @@ class CoinBoxController @Autowired constructor(val coinBoxService: CoinBoxServic
      * お金を投入します。
      */
     @PatchMapping("/insert/{value}")
-    fun insert(@PathVariable value: Int):CoinBox{
+    fun insert(@PathVariable value: Int): CoinBox {
         return coinBoxService.insert(value)
     }
 
@@ -31,7 +31,7 @@ class CoinBoxController @Autowired constructor(val coinBoxService: CoinBoxServic
      * お釣りを返却します。
      */
     @PatchMapping("/release")
-    fun release(): CoinBox{
+    fun release(): CoinBox {
         var coinBox = coinBoxService.findAll()
         val coinCount: Array<Int> = coinBoxService.calcChange(coinBox.deposit)
         coinBox.deposit = 0
