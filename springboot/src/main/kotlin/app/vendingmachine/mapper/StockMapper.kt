@@ -29,6 +29,15 @@ interface StockMapper {
     )
     fun findById(id: Int): Stock
 
+    @Select(
+        """
+        select stocks.id, name, temperature, price, quantity from stocks
+        join products on stocks.product_id = products.id
+        where stocks.id = #{id}
+    """
+    )
+    fun findStockProductById(id: Int): StockResponse
+
     @Insert(
         """
         insert into stocks (id, product_id, quantity)

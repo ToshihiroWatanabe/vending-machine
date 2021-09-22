@@ -1,7 +1,7 @@
 -- 製品テーブル
 CREATE TABLE IF NOT EXISTS products(
     -- 製品ID
-    id VARCHAR(16) PRIMARY KEY,
+    id VARCHAR(36) PRIMARY KEY,
     -- 製品名
     name VARCHAR(100),
     -- 温度
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS stocks(
     -- 在庫ID
     id INTEGER PRIMARY KEY,
     -- 製品ID
-    product_id VARCHAR(16) NOT NULL,
+    product_id VARCHAR(36) NOT NULL,
     -- 在庫数
     quantity INTEGER NOT NULL,
     FOREIGN KEY (product_id) REFERENCES products(id)
@@ -30,11 +30,11 @@ CREATE TABLE IF NOT EXISTS stocks(
 -- 売上履歴テーブル
 CREATE TABLE IF NOT EXISTS sales_history(
     -- 履歴ID
-    id VARCHAR(16) PRIMARY KEY,
+    id VARCHAR(36) PRIMARY KEY,
     -- 購入時刻
     purchase_time DATETIME NOT NULL,
     -- 製品ID
-    product_id VARCHAR(16) NOT NULL,
+    product_id VARCHAR(36) NOT NULL,
     FOREIGN KEY (product_id) REFERENCES products(id)
 );
 

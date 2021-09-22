@@ -30,7 +30,6 @@ const VendingMachine = () => {
     CoinBoxService.insert(value).then((res: any) => {
       console.log(res.data);
       setCoinBox(res.data);
-      console.log(value + "円が投入されました");
     });
   };
 
@@ -38,7 +37,6 @@ const VendingMachine = () => {
     CoinBoxService.release().then((res: any) => {
       console.log(res.data);
       setCoinBox(res.data);
-      console.log("おつり返却");
     });
   };
 
