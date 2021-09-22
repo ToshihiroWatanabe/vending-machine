@@ -18,14 +18,20 @@ class CoinBoxServiceTest {
     inner class CalcChange {
         @Test
         fun calcChange1000() {
-            val array: Array<Int> = arrayOf(1, 0, 0, 0, 0, 0)
+            val array: Array<Int> = arrayOf(1, 0, 0, 0, 0)
             assertArrayEquals(array, coinBoxService.calcChange(1000))
         }
 
         @Test
         fun calcChange500() {
-            val array: Array<Int> = arrayOf(0, 1, 0, 0, 0, 0)
+            val array: Array<Int> = arrayOf(0, 1, 0, 0, 0)
             assertArrayEquals(array, coinBoxService.calcChange(500))
+        }
+
+        @Test
+        fun calcChange1660() {
+            val array: Array<Int> = arrayOf(1, 1, 1, 1, 1)
+            assertArrayEquals(array, coinBoxService.calcChange(1660))
         }
     }
 }

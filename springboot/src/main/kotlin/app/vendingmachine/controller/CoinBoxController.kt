@@ -35,11 +35,11 @@ class CoinBoxController @Autowired constructor(val coinBoxService: CoinBoxServic
         var coinBox = coinBoxService.findAll()
         val coinCount: Array<Int> = coinBoxService.calcChange(coinBox.deposit)
         coinBox.deposit = 0
-        coinBox.left1000 -= coinCount[1]
-        coinBox.left500 -= coinCount[2]
-        coinBox.left100 -= coinCount[3]
-        coinBox.left50 -= coinCount[4]
-        coinBox.left10 -= coinCount[5]
+        coinBox.left1000 -= coinCount[0]
+        coinBox.left500 -= coinCount[1]
+        coinBox.left100 -= coinCount[2]
+        coinBox.left50 -= coinCount[3]
+        coinBox.left10 -= coinCount[4]
         coinBoxService.update(coinBox)
         return coinBoxService.findAll()
     }

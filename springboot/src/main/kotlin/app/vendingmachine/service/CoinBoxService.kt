@@ -48,7 +48,7 @@ class CoinBoxService @Autowired constructor(val coinBoxMapper: CoinBoxMapper) {
      * お釣りの金額から硬貨や紙幣の枚数を計算します。
      */
     fun calcChange(change: Int): Array<Int> {
-        val moneyList = listOf(1000, 500, 200, 100, 50, 10)
+        val moneyList = listOf(1000, 500, 100, 50, 10)
         var moneyCount: Array<Int> = arrayOf()
         var changeLeft = change
         moneyList.forEach { money ->
