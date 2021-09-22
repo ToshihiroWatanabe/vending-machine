@@ -97,7 +97,6 @@ const VendingMachine = () => {
       >
         おつり・返却
       </button>
-      <CoinBoxTable coinBox={coinBox} />
     </Fragment>
   );
 };

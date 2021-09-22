@@ -1,7 +1,10 @@
+import CoinBoxTable from "components/CoinBoxTable";
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CoinBoxService from "services/CoinBox.service";
 import ProductService from "services/Product.service";
 import SalesHistoryService from "services/SalesHistory.service";
+import { CoinBox } from "types/CoinBox";
 
 type Product = {
   id: string;
@@ -20,6 +23,7 @@ type SalesHistory = {
 const Admin = () => {
   const [products, setProducts] = useState<Product[]>();
   const [salesHistory, setSalesHistory] = useState<SalesHistory[]>();
+  const [coinBox, setCoinBox] = useState<CoinBox>();
 
   useEffect(() => {
     ProductService.get().then((res) => {
@@ -28,12 +32,16 @@ const Admin = () => {
     SalesHistoryService.get().then((res) => {
       setSalesHistory(res.data);
     });
+    CoinBoxService.get().then((res) => {
+      setCoinBox(res.data);
+    });
   }, []);
 
   return (
     <Fragment>
       <h1>自動販売機アプリ - 管理者ページ</h1>
       <Link to="/">ホームに戻る</Link>
+      <CoinBoxTable coinBox={coinBox} />
       <table>
         <thead>
           <tr>
