@@ -1,22 +1,8 @@
+import { CoinBox } from "types/CoinBox";
+import { Stock } from "types/Stock";
+import CoinBoxTable from "components/CoinBoxTable";
 import { Fragment, useEffect, useState } from "react";
 import CoinBoxService from "services/CoinBox.service";
-
-type CoinBox = {
-  deposit: number;
-  left10: number;
-  left50: number;
-  left100: number;
-  left500: number;
-  left1000: number;
-};
-
-type Stock = {
-  id: number;
-  name: string;
-  temperature: string;
-  price: number;
-  quantity: number;
-};
 
 const VendingMachine = () => {
   const [coinBox, setCoinBox] = useState<CoinBox>();
@@ -111,28 +97,7 @@ const VendingMachine = () => {
       >
         おつり・返却
       </button>
-      <table>
-        <tr>
-          <th>10円玉</th>
-          <th>残り{coinBox?.left10}枚</th>
-        </tr>
-        <tr>
-          <th>50円玉</th>
-          <th>残り{coinBox?.left50}枚</th>
-        </tr>
-        <tr>
-          <th>100円玉</th>
-          <th>残り{coinBox?.left100}枚</th>
-        </tr>
-        <tr>
-          <th>500円玉</th>
-          <th>残り{coinBox?.left500}枚</th>
-        </tr>
-        <tr>
-          <th>1000円札</th>
-          <th>残り{coinBox?.left1000}枚</th>
-        </tr>
-      </table>
+      <CoinBoxTable coinBox={coinBox} />
     </Fragment>
   );
 };
