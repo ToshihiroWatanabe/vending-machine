@@ -16,10 +16,9 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.mockito.BDDMockito.given
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 
-@WebMvcTest
+@WebMvcTest(CoinBoxController::class)
 @DisplayName("CoinBoxControllerのテスト")
 internal class CoinBoxControllerTest {
     @Autowired
