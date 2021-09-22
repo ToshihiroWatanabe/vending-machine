@@ -1,6 +1,7 @@
 package app.vendingmachine.mapper
 
 import app.vendingmachine.model.Stock
+import app.vendingmachine.model.StockResponse
 import org.apache.ibatis.annotations.*
 
 @Mapper
@@ -12,6 +13,14 @@ interface StockMapper {
     """
     )
     fun findAll(): List<Stock>
+
+    @Select(
+        """
+        select stocks.id, name, temperature, price, quantity from stocks
+        join products on stocks.product_id = products.id
+    """
+    )
+    fun findAllStockProducts(): List<StockResponse>
 
     @Select(
         """

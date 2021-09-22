@@ -1,6 +1,7 @@
 package app.vendingmachine.controller
 
 import app.vendingmachine.model.Stock
+import app.vendingmachine.model.StockResponse
 import app.vendingmachine.service.StockService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
@@ -10,8 +11,8 @@ import org.springframework.web.bind.annotation.*
 class StockController @Autowired constructor(val stockService: StockService) {
 
     @GetMapping("")
-    fun findAll(): List<Stock> {
-        return stockService.findAll()
+    fun findAll(): List<StockResponse> {
+        return stockService.findAllStockProducts()
     }
 
     @PostMapping("")

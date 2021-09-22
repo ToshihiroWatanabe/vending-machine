@@ -2,6 +2,7 @@ package app.vendingmachine.service
 
 import app.vendingmachine.mapper.StockMapper
 import app.vendingmachine.model.Stock
+import app.vendingmachine.model.StockResponse
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -10,6 +11,10 @@ class StockService @Autowired constructor(val stockMapper: StockMapper) {
 
     fun findAll(): List<Stock> {
         return stockMapper.findAll()
+    }
+
+    fun findAllStockProducts(): List<StockResponse> {
+        return stockMapper.findAllStockProducts()
     }
 
     fun findById(id: Int): Stock {

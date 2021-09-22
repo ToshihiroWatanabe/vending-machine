@@ -2,18 +2,27 @@ import { CoinBox } from "types/CoinBox";
 import { Stock } from "types/Stock";
 import { Fragment, useEffect, useState } from "react";
 import CoinBoxService from "services/CoinBox.service";
+import StockService from "services/Stock.service";
 
 const VendingMachine = () => {
   const [coinBox, setCoinBox] = useState<CoinBox>();
   const [stocks, setStocks] = useState<Stock[]>([
-    { id: 1, name: "商品1", temperature: "cold", price: 140, quantity: 24 },
-    { id: 2, name: "商品2", temperature: "hot", price: 120, quantity: 24 },
+    {
+      id: 1,
+      name: "読込中...",
+      temperature: "cold",
+      price: 9999,
+      quantity: 24,
+    },
   ]);
 
   useEffect(() => {
     CoinBoxService.get().then((res: any) => {
       console.log(res.data);
       setCoinBox(res.data);
+    });
+    StockService.get().then((res: any) => {
+      setStocks(res.data);
     });
   }, []);
 
