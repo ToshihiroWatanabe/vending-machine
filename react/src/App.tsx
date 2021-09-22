@@ -63,7 +63,7 @@ function App() {
               ? "つめたい"
               : ""}
             <br />
-            {stock.quantity !== 0 ? stock.price : "売り切れ"}
+            {stock.quantity !== 0 ? stock.price + "円" : "売り切れ"}
           </button>
         );
       })}
@@ -112,6 +112,28 @@ function App() {
       >
         おつり・返却
       </button>
+      <table>
+        <tr>
+          <th>10円玉</th>
+          <th>残り{coinBox?.left10}枚</th>
+        </tr>
+        <tr>
+          <th>50円玉</th>
+          <th>残り{coinBox?.left50}枚</th>
+        </tr>
+        <tr>
+          <th>100円玉</th>
+          <th>残り{coinBox?.left100}枚</th>
+        </tr>
+        <tr>
+          <th>500円玉</th>
+          <th>残り{coinBox?.left500}枚</th>
+        </tr>
+        <tr>
+          <th>1000円札</th>
+          <th>残り{coinBox?.left1000}枚</th>
+        </tr>
+      </table>
     </div>
   );
 }
