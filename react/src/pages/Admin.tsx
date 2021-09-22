@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductService from "services/Product.service";
+import SalesHistoryService from "services/SalesHistory.service";
 
 type Product = {
   id: string;
@@ -10,12 +11,22 @@ type Product = {
   vendorName: string;
 };
 
+type SalesHistory = {
+  id: string;
+  purchaseTime: string;
+  productId: string;
+};
+
 const Admin = () => {
   const [products, setProducts] = useState<Product[]>();
+  const [salesHistory, setSalesHistory] = useState<SalesHistory[]>();
 
   useEffect(() => {
     ProductService.get().then((res) => {
       setProducts(res.data);
+    });
+    SalesHistoryService.get().then((res) => {
+      setSalesHistory(res.data);
     });
   }, []);
 
@@ -42,6 +53,26 @@ const Admin = () => {
                 <th>{product.price}</th>
                 <th>{product.temperature}</th>
                 <th>{product.vendorName}</th>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <table>
+        <thead>
+          <tr>
+            <th>履歴ID</th>
+            <th>購入時刻</th>
+            <th>商品ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          {salesHistory?.map((history) => {
+            return (
+              <tr key={history.id}>
+                <th>{history.id}</th>
+                <th>{history.purchaseTime}</th>
+                <th>{history.productId}</th>
               </tr>
             );
           })}

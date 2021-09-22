@@ -1,9 +1,9 @@
 import http from "http-common";
 
-class CoinBoxService {
+class ProductService {
   get() {
     return http.get("/product");
   }
 }
 
-export default new CoinBoxService();
+export default new ProductService();
