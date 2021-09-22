@@ -3,6 +3,7 @@ import { Stock } from "types/Stock";
 import { Fragment, useEffect, useState } from "react";
 import CoinBoxService from "services/CoinBox.service";
 import StockService from "services/Stock.service";
+import PurchaseService from "services/Purchase.service";
 
 const VendingMachine = () => {
   const [coinBox, setCoinBox] = useState<CoinBox>();
@@ -40,12 +41,30 @@ const VendingMachine = () => {
     });
   };
 
+  const onPurchaseButtonClick = (id: number) => {
+    PurchaseService.post(id).then((res: any) => {
+      // 情報を更新
+      CoinBoxService.get().then((res: any) => {
+        console.log(res.data);
+        setCoinBox(res.data);
+      });
+      StockService.get().then((res: any) => {
+        setStocks(res.data);
+      });
+    });
+  };
+
   return (
     <Fragment>
       <h1>自動販売機アプリ</h1>
       {stocks.map((stock) => {
         return (
-          <button key={stock.id}>
+          <button
+            key={stock.id}
+            onClick={() => {
+              onPurchaseButtonClick(stock.id);
+            }}
+          >
             {stock.name}
             <br />
             {stock.temperature === "hot"

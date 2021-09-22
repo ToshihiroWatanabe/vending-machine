@@ -31,11 +31,11 @@ class PurchaseService @Autowired constructor(
 
 //        投入金額を減らす
         coinBox.deposit -= stockProduct.price
-//        println("coinBoxService.update: " + coinBoxService.update(coinBox))
+        coinBoxService.update(coinBox)
 //        在庫を減らす
         var stock: Stock = stockService.findById(id)
         stock.quantity -= 1
-//        println("stockService.update" + stockService.update(stock))
+        stockService.update(stock)
         //        購入履歴を更新
         var history =
             SalesHistory(
@@ -43,7 +43,7 @@ class PurchaseService @Autowired constructor(
                 purchaseTime = LocalDateTime.now(),
                 productId = stockService.findById(id).id
             )
-//        println("salesHistoryService.create: " + salesHistoryService.create(history))
+        salesHistoryService.create(history)
         return true
     }
 }
