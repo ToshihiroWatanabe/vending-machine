@@ -13,6 +13,13 @@ interface StockMapper {
     )
     fun findAll(): List<Stock>
 
+    @Select(
+        """
+            select * from stocks where id = #{id}
+        """
+    )
+    fun findById(id: Int): Stock
+
     @Insert(
         """
         insert into stocks (id, product_id, quantity)

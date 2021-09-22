@@ -12,6 +12,10 @@ class StockService @Autowired constructor(val stockMapper: StockMapper) {
         return stockMapper.findAll()
     }
 
+    fun findById(id: Int): Stock {
+        return stockMapper.findById(id)
+    }
+
     fun create(stock: Stock): Boolean {
         return stockMapper.create(stock)
     }
