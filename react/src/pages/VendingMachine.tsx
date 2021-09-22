@@ -1,6 +1,5 @@
 import { CoinBox } from "types/CoinBox";
 import { Stock } from "types/Stock";
-import CoinBoxTable from "components/CoinBoxTable";
 import { Fragment, useEffect, useState } from "react";
 import CoinBoxService from "services/CoinBox.service";
 
