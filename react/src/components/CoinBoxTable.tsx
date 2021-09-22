@@ -1,4 +1,10 @@
-const CoinBoxTable = (props: any) => {
+import { CoinBox } from "types/CoinBox";
+
+type Props = {
+  coinBox?: CoinBox;
+};
+
+const CoinBoxTable = (props: Props) => {
   return (
     <table>
       <tbody>
