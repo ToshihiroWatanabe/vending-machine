@@ -1,4 +1,3 @@
-import com.moowork.gradle.node.npm.NpmTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -51,7 +50,7 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-task<NpmTask>("copyDir"){
+task("copyDir"){
 		copy {
 			from("./../react/build")
 			into("./build/resources/main/static")
