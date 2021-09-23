@@ -23,6 +23,10 @@ class PurchaseService @Autowired constructor(
         if (isNull(stockProduct)) {
             return false
         }
+//        在庫が残っているかチェック
+        if (stockProduct.quantity < 1) {
+            return false
+        }
 //        投入金額が足りているかチェック
         var coinBox: CoinBox = coinBoxService.findAll()
         if (stockProduct.price > coinBox.deposit) {
