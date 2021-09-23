@@ -73,4 +73,11 @@ class CoinBoxService @Autowired constructor(val coinBoxMapper: CoinBoxMapper) {
         }
         return moneyCount
     }
+
+    /**
+     * お釣りを返却します。
+     */
+    fun release(): Boolean {
+        return coinBoxMapper.release()
+    }
 }

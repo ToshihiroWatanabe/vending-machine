@@ -1,18 +1,29 @@
-INSERT INTO coin_box(
+INSERT INTO
+  coin_box(
     id,
     deposit,
+    deposit_10,
+    deposit_50,
+    deposit_100,
+    deposit_500,
+    deposit_1000,
     left_10,
     left_50,
     left_100,
     left_500,
     left_1000
-)
+  )
 VALUES(
     0,
     0,
-    120,
-    120,
-    120,
-    120,
-    120
-);
+    0,
+    0,
+    0,
+    0,
+    0,
+    100,
+    50,
+    100,
+    50,
+    0
+  );

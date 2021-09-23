@@ -3,7 +3,7 @@ import { Stock } from "types/Stock";
 
 type Props = {
   stocks?: Stock[];
-  onSupplyButtonClicked: any;
+  onSupplyButtonClicked: Function;
 };
 
 const StockTable = (props: Props) => {
