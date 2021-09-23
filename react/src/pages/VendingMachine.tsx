@@ -72,7 +72,7 @@ const VendingMachine = () => {
             onClick={() => {
               onPurchaseButtonClick(stock.id);
             }}
-            disabled={stock.price > coinBox?.deposit}
+            disabled={stock.price > coinBox?.deposit || stock.quantity <= 0}
           >
             {stock.name}
             <br />
@@ -82,7 +82,7 @@ const VendingMachine = () => {
               ? "つめたい"
               : ""}
             <br />
-            {stock.quantity !== 0 ? stock.price + "円" : "売り切れ"}
+            {stock.quantity > 0 ? stock.price + "円" : "売り切れ"}
           </button>
         );
       })}
@@ -131,6 +131,7 @@ const VendingMachine = () => {
       >
         おつり・返却
       </button>
+      <hr />
       <CoinBoxTable coinBox={coinBox} />
     </Fragment>
   );
