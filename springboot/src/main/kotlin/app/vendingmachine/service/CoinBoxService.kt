@@ -5,6 +5,9 @@ import app.vendingmachine.model.CoinBox
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
+/**
+ * 投入金額とお釣り用のお金に関するサービスクラスです。
+ */
 @Service
 class CoinBoxService @Autowired constructor(val coinBoxMapper: CoinBoxMapper) {
 

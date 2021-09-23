@@ -5,6 +5,9 @@ import app.vendingmachine.model.Product
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
+/**
+ * 商品情報に関するサービスクラスです。
+ */
 @Service
 class ProductService @Autowired constructor(val productMapper: ProductMapper) {
 

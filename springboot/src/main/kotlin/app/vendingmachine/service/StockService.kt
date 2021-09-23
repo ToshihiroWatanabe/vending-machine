@@ -6,6 +6,9 @@ import app.vendingmachine.model.StockResponse
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
+/**
+ * 在庫に関するサービスクラスです。
+ */
 @Service
 class StockService @Autowired constructor(val stockMapper: StockMapper) {
 

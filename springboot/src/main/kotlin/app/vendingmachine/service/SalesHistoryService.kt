@@ -5,6 +5,9 @@ import app.vendingmachine.model.SalesHistory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
+/**
+ * 販売履歴に関するサービスクラスです。
+ */
 @Service
 class SalesHistoryService @Autowired constructor(val salesHistoryMapper: SalesHistoryMapper) {
 

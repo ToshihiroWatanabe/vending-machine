@@ -25,4 +25,4 @@ https://vending--machine.herokuapp.com/
 # データベース
 
 テーブルを作成するSQLファイルはこちらです。
-[springboot\src\test\resources\schema.sql](springboot\src\test\resources\schema.sql)
+[springboot/src/test/resources/schema.sql](springboot/src/test/resources/schema.sql)

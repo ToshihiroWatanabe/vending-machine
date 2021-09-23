@@ -10,6 +10,9 @@ import java.time.LocalDateTime
 import java.util.*
 import java.util.Objects.isNull
 
+/**
+ * 購入に関するサービスクラスです。
+ */
 @Service
 class PurchaseService @Autowired constructor(
     val stockService: StockService,
@@ -17,6 +20,9 @@ class PurchaseService @Autowired constructor(
     val salesHistoryService: SalesHistoryService
 ) {
 
+    /**
+     * 指定された在庫IDの商品を購入します。
+     */
     fun purchase(id: Int): Boolean {
 //        TODO: トランザクション処理にする
 //        指定されたIDのstockが存在するかチェック
