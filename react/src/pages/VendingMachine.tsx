@@ -10,6 +10,11 @@ import { Link } from "react-router-dom";
 const VendingMachine = () => {
   const [coinBox, setCoinBox] = useState<CoinBox>({
     deposit: 0,
+    deposit10: 0,
+    deposit50: 0,
+    deposit100: 0,
+    deposit500: 0,
+    deposit1000: 0,
     left10: 0,
     left50: 0,
     left100: 0,
@@ -29,7 +34,6 @@ const VendingMachine = () => {
   useEffect(() => {
     document.title = "自動販売機アプリ";
     CoinBoxService.get().then((res: any) => {
-      console.log(res.data);
       setCoinBox(res.data);
     });
     StockService.get().then((res: any) => {
@@ -39,14 +43,12 @@ const VendingMachine = () => {
 
   const onInsertButtonClick = (value: number) => {
     CoinBoxService.insert(value).then((res: any) => {
-      console.log(res.data);
       setCoinBox(res.data);
     });
   };
 
   const onReleaseButtonClick = () => {
     CoinBoxService.release().then((res: any) => {
-      console.log(res.data);
       setCoinBox(res.data);
     });
   };
@@ -55,7 +57,6 @@ const VendingMachine = () => {
     PurchaseService.post(id).then((res: any) => {
       // 情報を更新
       CoinBoxService.get().then((res: any) => {
-        console.log(res.data);
         setCoinBox(res.data);
       });
       StockService.get().then((res: any) => {

@@ -36,6 +36,32 @@ class PurchaseService @Autowired constructor(
 
 //        投入金額を減らす
         coinBox.deposit -= stockProduct.price
+        var priceLeft: Int = stockProduct.price
+        while (priceLeft >= 1000 && coinBox.deposit1000 >= 1) {
+            println("1000")
+            coinBox.deposit1000 -= 1
+            priceLeft -= 1000
+        }
+        while (priceLeft >= 500 && coinBox.deposit500 >= 1) {
+            println("500")
+            coinBox.deposit500 -= 1
+            priceLeft -= 500
+        }
+        while (priceLeft >= 100 && coinBox.deposit100 >= 1) {
+            println("100")
+            coinBox.deposit100 -= 1
+            priceLeft -= 100
+        }
+        while (priceLeft >= 50 && coinBox.deposit50 >= 1) {
+            println("50")
+            coinBox.deposit50 -= 1
+            priceLeft -= 50
+        }
+        while (priceLeft >= 10 && coinBox.deposit10 >= 1) {
+            println("10")
+            coinBox.deposit10 -= 1
+            priceLeft -= 10
+        }
         coinBoxService.update(coinBox)
 //        在庫を減らす
         var stock: Stock = stockService.findById(id)

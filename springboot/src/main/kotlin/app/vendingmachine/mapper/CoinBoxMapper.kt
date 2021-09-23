@@ -19,6 +19,11 @@ interface CoinBoxMapper {
         """
         UPDATE coin_box
         SET deposit = #{deposit},
+            deposit_10 = #{deposit10},
+            deposit_50 = #{deposit50},
+            deposit_100 = #{deposit100},
+            deposit_500 = #{deposit500},
+            deposit_1000 = #{deposit1000},
             left_10 = #{left10},
             left_50 = #{left50},
             left_100 = #{left100},
