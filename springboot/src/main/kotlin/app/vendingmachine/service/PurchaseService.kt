@@ -18,6 +18,7 @@ class PurchaseService @Autowired constructor(
 ) {
 
     fun purchase(id: Int): Boolean {
+//        TODO: トランザクション処理にする
 //        指定されたIDのstockが存在するかチェック
         var stockProduct: StockResponse = stockService.findStockProductById(id)
         if (isNull(stockProduct)) {

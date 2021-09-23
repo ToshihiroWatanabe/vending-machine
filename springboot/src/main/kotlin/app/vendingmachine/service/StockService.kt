@@ -36,4 +36,15 @@ class StockService @Autowired constructor(val stockMapper: StockMapper) {
     fun delete(id: Int): Boolean {
         return stockMapper.delete(id)
     }
+
+    /**
+     * 在庫を補充します。
+     * @param id 在庫ID
+     * @param increment 増分
+     */
+    fun supply(id: Int, increment: Int): Boolean {
+        var stock: Stock = stockMapper.findById(id)
+        stock.quantity += increment
+        return stockMapper.update(stock)
+    }
 }

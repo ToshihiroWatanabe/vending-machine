@@ -26,18 +26,33 @@ class CoinBoxService @Autowired constructor(val coinBoxMapper: CoinBoxMapper) {
         }
         when (value) {
             10 -> {
+                if (coinBox.left10 >= 999) {
+                    return return coinBoxMapper.findAll()
+                }
                 coinBoxMapper.insert10()
             }
             50 -> {
+                if (coinBox.left50 >= 999) {
+                    return return coinBoxMapper.findAll()
+                }
                 coinBoxMapper.insert50()
             }
             100 -> {
+                if (coinBox.left100 >= 999) {
+                    return return coinBoxMapper.findAll()
+                }
                 coinBoxMapper.insert100()
             }
             500 -> {
+                if (coinBox.left500 >= 999) {
+                    return return coinBoxMapper.findAll()
+                }
                 coinBoxMapper.insert500()
             }
             1000 -> {
+                if (coinBox.left1000 >= 999) {
+                    return return coinBoxMapper.findAll()
+                }
                 coinBoxMapper.insert1000()
             }
         }

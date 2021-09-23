@@ -1,5 +1,5 @@
 import CoinBoxTable from "components/CoinBoxTable";
-import StockTable from "components/Stocktable";
+import StockTable from "components/StockTable";
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CoinBoxService from "services/CoinBox.service";
@@ -53,11 +53,26 @@ const Admin = () => {
     });
   }, []);
 
+  /**
+   * 補充ボタンが押された時の処理です。
+   * @param id 在庫ID
+   */
+  const onSupplyButtonClicked = (id: number) => {
+    StockService.supply(id, 24).then((res) => {
+      StockService.get().then((res) => {
+        setStocks(res.data);
+      });
+    });
+  };
+
   return (
     <Fragment>
       <h1>自動販売機アプリ - 管理者ページ</h1>
       <Link to="/">ホームに戻る</Link>
-      <StockTable stocks={stocks} />
+      <StockTable
+        stocks={stocks}
+        onSupplyButtonClicked={onSupplyButtonClicked}
+      />
       <CoinBoxTable coinBox={coinBox} />
       <table>
         <thead>

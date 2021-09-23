@@ -30,4 +30,9 @@ class StockController @Autowired constructor(val stockService: StockService) {
     fun delete(@RequestBody id: Int): Boolean {
         return stockService.delete(id)
     }
+
+    @PostMapping("/supply/{id}")
+    fun supply(@PathVariable id: Int, @RequestBody increment: Int): Boolean {
+        return stockService.supply(id, increment)
+    }
 }
