@@ -5,6 +5,7 @@ import CoinBoxService from "services/CoinBox.service";
 import StockService from "services/Stock.service";
 import PurchaseService from "services/Purchase.service";
 import CoinBoxTable from "components/CoinBoxTable";
+import { Link } from "react-router-dom";
 
 const VendingMachine = () => {
   const [coinBox, setCoinBox] = useState<CoinBox>({
@@ -26,6 +27,7 @@ const VendingMachine = () => {
   ]);
 
   useEffect(() => {
+    document.title = "自動販売機アプリ";
     CoinBoxService.get().then((res: any) => {
       console.log(res.data);
       setCoinBox(res.data);
@@ -133,6 +135,7 @@ const VendingMachine = () => {
       </button>
       <hr />
       <CoinBoxTable coinBox={coinBox} />
+      <Link to="/admin">管理画面へ</Link>
     </Fragment>
   );
 };

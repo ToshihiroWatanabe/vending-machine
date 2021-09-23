@@ -38,7 +38,7 @@ const Admin = () => {
   ]);
 
   useEffect(() => {
-    document.title += " - 管理者ページ";
+    document.title = "自動販売機アプリ - 管理画面";
     ProductService.get().then((res) => {
       setProducts(res.data);
     });
@@ -67,7 +67,7 @@ const Admin = () => {
 
   return (
     <Fragment>
-      <h1>自動販売機アプリ - 管理者ページ</h1>
+      <h1>自動販売機アプリ - 管理画面</h1>
       <Link to="/">ホームに戻る</Link>
       <StockTable
         stocks={stocks}
