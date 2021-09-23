@@ -5,15 +5,24 @@ import app.vendingmachine.service.CoinBoxService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
+/**
+ * 投入金額とお釣り用のお金に関するコントローラークラスです。
+ */
 @RestController
 @RequestMapping("/api/coin-box")
 class CoinBoxController @Autowired constructor(val coinBoxService: CoinBoxService) {
 
+    /**
+     * お金のデータを取得します。
+     */
     @GetMapping("")
     fun findAll(): CoinBox {
         return coinBoxService.findAll()
     }
 
+    /**
+     * お金のデータを更新します。
+     */
     @PutMapping("")
     fun update(@RequestBody coinBox: CoinBox): Boolean {
         return coinBoxService.update(coinBox)

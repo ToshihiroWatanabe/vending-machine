@@ -3,6 +3,9 @@ package app.vendingmachine.mapper
 import app.vendingmachine.model.SalesHistory
 import org.apache.ibatis.annotations.*
 
+/**
+ * sales_historyテーブルのマッパーです。
+ */
 @Mapper
 interface SalesHistoryMapper {
 

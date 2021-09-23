@@ -4,6 +4,9 @@ import app.vendingmachine.model.Stock
 import app.vendingmachine.model.StockResponse
 import org.apache.ibatis.annotations.*
 
+/**
+ * stocksテーブルのマッパーです。
+ */
 @Mapper
 interface StockMapper {
 

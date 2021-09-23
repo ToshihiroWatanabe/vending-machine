@@ -3,6 +3,9 @@ package app.vendingmachine.mapper
 import app.vendingmachine.model.Product
 import org.apache.ibatis.annotations.*
 
+/**
+ * productsテーブルのマッパーです。
+ */
 @Mapper
 interface ProductMapper {
 

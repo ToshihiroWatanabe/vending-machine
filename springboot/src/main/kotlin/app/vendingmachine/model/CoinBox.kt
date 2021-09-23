@@ -1,5 +1,8 @@
 package app.vendingmachine.model
 
+/**
+ *　投入金額とお釣り用のお金
+ */
 data class CoinBox(
     var deposit: Int,
     var deposit10: Int,
