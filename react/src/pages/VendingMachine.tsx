@@ -4,9 +4,17 @@ import { Fragment, useEffect, useState } from "react";
 import CoinBoxService from "services/CoinBox.service";
 import StockService from "services/Stock.service";
 import PurchaseService from "services/Purchase.service";
+import CoinBoxTable from "components/CoinBoxTable";
 
 const VendingMachine = () => {
-  const [coinBox, setCoinBox] = useState<CoinBox>();
+  const [coinBox, setCoinBox] = useState<CoinBox>({
+    deposit: 0,
+    left10: 0,
+    left50: 0,
+    left100: 0,
+    left500: 0,
+    left1000: 0,
+  });
   const [stocks, setStocks] = useState<Stock[]>([
     {
       id: 1,
@@ -64,6 +72,7 @@ const VendingMachine = () => {
             onClick={() => {
               onPurchaseButtonClick(stock.id);
             }}
+            disabled={stock.price > coinBox?.deposit}
           >
             {stock.name}
             <br />
@@ -122,6 +131,7 @@ const VendingMachine = () => {
       >
         おつり・返却
       </button>
+      <CoinBoxTable coinBox={coinBox} />
     </Fragment>
   );
 };
