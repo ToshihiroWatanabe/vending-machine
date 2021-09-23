@@ -7,7 +7,7 @@ import app.vendingmachine.model.StockResponse
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
-import java.util.UUID
+import java.util.*
 import java.util.Objects.isNull
 
 @Service

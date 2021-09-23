@@ -65,6 +65,17 @@ const Admin = () => {
     });
   };
 
+  /**
+   * 販売履歴を全て削除するボタンが押された時の処理です。
+   */
+  const onSalesHistoryDeleteAllButtonClick = () => {
+    SalesHistoryService.deleteAll().then((res) => {
+      SalesHistoryService.get().then((res) => {
+        setSalesHistory(res.data);
+      });
+    });
+  };
+
   return (
     <Fragment>
       <h1>自動販売機アプリ - 管理画面</h1>
@@ -102,7 +113,13 @@ const Admin = () => {
       </table>
       <details>
         <summary>販売履歴</summary>
-
+        <button
+          onClick={() => {
+            onSalesHistoryDeleteAllButtonClick();
+          }}
+        >
+          履歴を全て削除
+        </button>
         <table>
           <thead>
             <tr>
