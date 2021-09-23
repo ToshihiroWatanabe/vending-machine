@@ -1,4 +1,5 @@
 import CoinBoxTable from "components/CoinBoxTable";
+import StockTable from "components/Stocktable";
 import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CoinBoxService from "services/CoinBox.service";
@@ -56,23 +57,7 @@ const Admin = () => {
     <Fragment>
       <h1>自動販売機アプリ - 管理者ページ</h1>
       <Link to="/">ホームに戻る</Link>
-      <table>
-        <tbody>
-          {stocks.map((stock) => {
-            return (
-              <tr key={stock.id}>
-                <th>{stock.id}</th>
-                <th>{stock.name}</th>
-                <th>
-                  {stock.temperature === "cold" ? "つめたい" : "あたたかい"}
-                </th>
-                <th>{stock.price}</th>
-                <th>{stock.quantity}</th>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <StockTable stocks={stocks} />
       <CoinBoxTable coinBox={coinBox} />
       <table>
         <thead>
