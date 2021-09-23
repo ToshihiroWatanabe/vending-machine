@@ -44,4 +44,12 @@ class CoinBoxController @Autowired constructor(val coinBoxService: CoinBoxServic
         coinBoxService.release()
         return coinBoxService.findAll()
     }
+
+    /**
+     * 指定されたお金の残り枚数を調整します。
+     */
+    @PostMapping("/adjust/{money}")
+    fun adjust(@PathVariable money: Int): CoinBox {
+        return coinBoxService.adjust(money)
+    }
 }

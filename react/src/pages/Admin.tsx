@@ -57,7 +57,7 @@ const Admin = () => {
    * 補充ボタンが押された時の処理です。
    * @param id 在庫ID
    */
-  const onSupplyButtonClicked = (id: number) => {
+  const onSupplyButtonClick = (id: number) => {
     StockService.supply(id, 24).then((res) => {
       StockService.get().then((res) => {
         setStocks(res.data);
@@ -76,20 +76,30 @@ const Admin = () => {
     });
   };
 
+  /**
+   * お金の調整ボタンが押された時の処理です。
+   */
+  const onAdjustButtonClick = (money: number) => {
+    CoinBoxService.adjust(money).then((res) => {
+      setCoinBox(res.data);
+    });
+  };
+
   return (
     <Fragment>
       <h1>自動販売機アプリ - 管理画面</h1>
       <Link to="/">ホームに戻る</Link>
-      <CoinBoxTable coinBox={coinBox} />
-      <StockTable
-        stocks={stocks}
-        onSupplyButtonClicked={onSupplyButtonClicked}
+      <CoinBoxTable
+        coinBox={coinBox}
+        isAdjustButtonVisibled={true}
+        onAdjustButtonClick={onAdjustButtonClick}
       />
+      <StockTable stocks={stocks} onSupplyButtonClick={onSupplyButtonClick} />
       <h4>商品一覧</h4>
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>商品ID</th>
             <th>商品名</th>
             <th>価格</th>
             <th>温度</th>
@@ -124,7 +134,6 @@ const Admin = () => {
         <table>
           <thead>
             <tr>
-              {/* <th>履歴ID</th> */}
               <th>販売時刻</th>
               <th>商品ID</th>
             </tr>
@@ -133,7 +142,6 @@ const Admin = () => {
             {salesHistory?.map((history) => {
               return (
                 <tr key={history.id}>
-                  {/* <th>{history.id}</th> */}
                   <th>{history.purchaseTime}</th>
                   <th>{history.productId}</th>
                 </tr>

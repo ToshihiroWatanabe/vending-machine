@@ -135,7 +135,11 @@ const VendingMachine = () => {
         おつり・返却
       </button>
       <hr />
-      <CoinBoxTable coinBox={coinBox} />
+      <CoinBoxTable
+        coinBox={coinBox}
+        isAdjustButtonVisibled={false}
+        onAdjustButtonClick={() => {}}
+      />
       <Link to="/admin">管理画面へ</Link>
     </Fragment>
   );

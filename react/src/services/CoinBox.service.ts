@@ -12,6 +12,10 @@ class CoinBoxService {
   release() {
     return http.patch("/coin-box/release");
   }
+
+  adjust(money: number) {
+    return http.post("/coin-box/adjust/" + money);
+  }
 }
 
 export default new CoinBoxService();

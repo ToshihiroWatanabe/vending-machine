@@ -90,4 +90,30 @@ class CoinBoxService @Autowired constructor(val coinBoxMapper: CoinBoxMapper) {
         }
         return moneyCount
     }
+
+    /**
+     * 指定されたお金の残り枚数を調整します。
+     */
+    fun adjust(money: Int): CoinBox {
+        var coinBox: CoinBox = coinBoxMapper.findAll()
+        when (money) {
+            10 -> {
+                coinBox.left10 = 100
+            }
+            50 -> {
+                coinBox.left50 = 50
+            }
+            100 -> {
+                coinBox.left100 = 50
+            }
+            500 -> {
+                coinBox.left500 = 50
+            }
+            1000 -> {
+                coinBox.left1000 = 0
+            }
+        }
+        coinBoxMapper.update(coinBox)
+        return coinBoxMapper.findAll()
+    }
 }

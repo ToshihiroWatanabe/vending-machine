@@ -3,7 +3,7 @@ import { Stock } from "types/Stock";
 
 type Props = {
   stocks?: Stock[];
-  onSupplyButtonClicked: Function;
+  onSupplyButtonClick: Function;
 };
 
 const StockTable = (props: Props) => {
@@ -34,7 +34,7 @@ const StockTable = (props: Props) => {
                 <th>
                   <button
                     onClick={() => {
-                      props.onSupplyButtonClicked(stock.id);
+                      props.onSupplyButtonClick(stock.id);
                     }}
                     disabled={stock.quantity > 24}
                   >
