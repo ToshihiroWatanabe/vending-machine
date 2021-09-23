@@ -36,7 +36,7 @@ internal class CoinBoxControllerTest {
         @DisplayName("GETリクエストのレスポンスが返る事")
         @Test
         fun findAll() {
-            given(mockCoinBoxService.findAll()).willReturn(CoinBox(100, 120, 120, 120, 120, 120))
+            given(mockCoinBoxService.findAll()).willReturn(CoinBox(100, 0, 0, 0, 0, 0, 120, 120, 120, 120, 120))
             mockMvc.perform(get("/api/coin-box"))
                 .andExpect(status().isOk)
                 .andExpect(jsonPath("deposit").value(100))
@@ -55,12 +55,12 @@ internal class CoinBoxControllerTest {
         @DisplayName("PUTリクエストのレスポンスが返る事")
         @Test
         fun update() {
-            given(mockCoinBoxService.update(CoinBox(120, 122, 120, 121, 120, 120)))
+            given(mockCoinBoxService.update(CoinBox(120, 0, 0, 0, 0, 0, 122, 120, 121, 120, 120)))
                 .willReturn(
                     true
                 )
 
-            val requestBody = CoinBox(120, 122, 120, 121, 120, 120)
+            val requestBody = CoinBox(120, 0, 0, 0, 0, 0, 122, 120, 121, 120, 120)
             val requestBodyJson = mapper.writeValueAsString(requestBody)
 
             mockMvc.perform(
