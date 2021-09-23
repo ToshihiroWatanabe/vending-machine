@@ -23,4 +23,8 @@ class SalesHistoryService @Autowired constructor(val salesHistoryMapper: SalesHi
     fun delete(id: String): Boolean {
         return salesHistoryMapper.delete(id)
     }
+
+    fun deleteAll(): Boolean {
+        return salesHistoryMapper.deleteAll()
+    }
 }

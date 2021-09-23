@@ -35,4 +35,11 @@ interface SalesHistoryMapper {
     """
     )
     fun delete(id: String): Boolean
+
+    @Delete(
+        """
+            delete from sales_history
+        """
+    )
+    fun deleteAll(): Boolean
 }
