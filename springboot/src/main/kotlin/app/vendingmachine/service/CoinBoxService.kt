@@ -60,6 +60,18 @@ class CoinBoxService @Autowired constructor(val coinBoxMapper: CoinBoxMapper) {
      * お釣りを返却します。
      */
     fun release(): Boolean {
+        var coinBox: CoinBox = coinBoxMapper.findAll()
+//        一度でも商品が購入されていた時(全てのお金のdepositが0の時)
+        if (coinBox.deposit10 == 0 && coinBox.deposit50 == 0 && coinBox.deposit100 == 0 && coinBox.deposit500 == 0 && coinBox.deposit1000 == 0) {
+            val coinCount: Array<Int> = calcChange(coinBox.deposit)
+            coinBox.deposit = 0
+            coinBox.left1000 -= coinCount[0]
+            coinBox.left500 -= coinCount[1]
+            coinBox.left100 -= coinCount[2]
+            coinBox.left50 -= coinCount[3]
+            coinBox.left10 -= coinCount[4]
+            return update(coinBox)
+        }
         return coinBoxMapper.release()
     }
 

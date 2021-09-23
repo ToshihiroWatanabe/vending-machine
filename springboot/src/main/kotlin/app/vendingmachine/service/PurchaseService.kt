@@ -42,32 +42,44 @@ class PurchaseService @Autowired constructor(
 
 //        投入金額を減らす
         coinBox.deposit -= stockProduct.price
-        var priceLeft: Int = stockProduct.price
-        while (priceLeft >= 1000 && coinBox.deposit1000 >= 1) {
-            println("1000")
-            coinBox.deposit1000 -= 1
-            priceLeft -= 1000
-        }
-        while (priceLeft >= 500 && coinBox.deposit500 >= 1) {
-            println("500")
-            coinBox.deposit500 -= 1
-            priceLeft -= 500
-        }
-        while (priceLeft >= 100 && coinBox.deposit100 >= 1) {
-            println("100")
-            coinBox.deposit100 -= 1
-            priceLeft -= 100
-        }
-        while (priceLeft >= 50 && coinBox.deposit50 >= 1) {
-            println("50")
-            coinBox.deposit50 -= 1
-            priceLeft -= 50
-        }
-        while (priceLeft >= 10 && coinBox.deposit10 >= 1) {
-            println("10")
-            coinBox.deposit10 -= 1
-            priceLeft -= 10
-        }
+//        一度でも購入すると投入したお金はお釣り用のお金に移動
+        coinBox.left10 += coinBox.deposit10
+        coinBox.deposit10 = 0
+        coinBox.left50 += coinBox.deposit50
+        coinBox.deposit50 = 0
+        coinBox.left100 += coinBox.deposit100
+        coinBox.deposit100 = 0
+        coinBox.left500 += coinBox.deposit500
+        coinBox.deposit500 = 0
+        coinBox.left1000 += coinBox.deposit1000
+        coinBox.deposit1000 = 0
+        
+//        var priceLeft: Int = stockProduct.price
+//        while (priceLeft >= 1000 && coinBox.deposit1000 >= 1) {
+//            println("1000")
+//            coinBox.deposit1000 -= 1
+//            priceLeft -= 1000
+//        }
+//        while (priceLeft >= 500 && coinBox.deposit500 >= 1) {
+//            println("500")
+//            coinBox.deposit500 -= 1
+//            priceLeft -= 500
+//        }
+//        while (priceLeft >= 100 && coinBox.deposit100 >= 1) {
+//            println("100")
+//            coinBox.deposit100 -= 1
+//            priceLeft -= 100
+//        }
+//        while (priceLeft >= 50 && coinBox.deposit50 >= 1) {
+//            println("50")
+//            coinBox.deposit50 -= 1
+//            priceLeft -= 50
+//        }
+//        while (priceLeft >= 10 && coinBox.deposit10 >= 1) {
+//            println("10")
+//            coinBox.deposit10 -= 1
+//            priceLeft -= 10
+//        }
         coinBoxService.update(coinBox)
 //        在庫を減らす
         var stock: Stock = stockService.findById(id)
