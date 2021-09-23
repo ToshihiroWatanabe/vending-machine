@@ -42,18 +42,18 @@ class PurchaseService @Autowired constructor(
 
 //        投入金額を減らす
         coinBox.deposit -= stockProduct.price
-//        一度でも購入すると投入したお金はお釣り用のお金に移動
-        coinBox.left10 += coinBox.deposit10
+//        一度でも購入すると投入したお金は0として扱う
+//        coinBox.left10 += coinBox.deposit10
         coinBox.deposit10 = 0
-        coinBox.left50 += coinBox.deposit50
+//        coinBox.left50 += coinBox.deposit50
         coinBox.deposit50 = 0
-        coinBox.left100 += coinBox.deposit100
+//        coinBox.left100 += coinBox.deposit100
         coinBox.deposit100 = 0
-        coinBox.left500 += coinBox.deposit500
+//        coinBox.left500 += coinBox.deposit500
         coinBox.deposit500 = 0
-        coinBox.left1000 += coinBox.deposit1000
+//        coinBox.left1000 += coinBox.deposit1000
         coinBox.deposit1000 = 0
-        
+
 //        var priceLeft: Int = stockProduct.price
 //        while (priceLeft >= 1000 && coinBox.deposit1000 >= 1) {
 //            println("1000")

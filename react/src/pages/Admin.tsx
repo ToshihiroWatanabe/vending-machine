@@ -80,11 +80,12 @@ const Admin = () => {
     <Fragment>
       <h1>自動販売機アプリ - 管理画面</h1>
       <Link to="/">ホームに戻る</Link>
+      <CoinBoxTable coinBox={coinBox} />
       <StockTable
         stocks={stocks}
         onSupplyButtonClicked={onSupplyButtonClicked}
       />
-      <CoinBoxTable coinBox={coinBox} />
+      <h4>商品一覧</h4>
       <table>
         <thead>
           <tr>
@@ -123,7 +124,7 @@ const Admin = () => {
         <table>
           <thead>
             <tr>
-              <th>履歴ID</th>
+              {/* <th>履歴ID</th> */}
               <th>販売時刻</th>
               <th>商品ID</th>
             </tr>
@@ -132,7 +133,7 @@ const Admin = () => {
             {salesHistory?.map((history) => {
               return (
                 <tr key={history.id}>
-                  <th>{history.id}</th>
+                  {/* <th>{history.id}</th> */}
                   <th>{history.purchaseTime}</th>
                   <th>{history.productId}</th>
                 </tr>
