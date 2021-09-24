@@ -14,8 +14,7 @@ import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 
 @WebMvcTest(CoinBoxController::class)
 @DisplayName("CoinBoxControllerのテスト")
@@ -30,16 +29,21 @@ internal class CoinBoxControllerTest {
     lateinit var mockCoinBoxService: CoinBoxService
 
     @Nested
-    @DisplayName("findAll")
+    @DisplayName("findAllのテスト")
     inner class FindAll {
 
-        @DisplayName("GETリクエストのレスポンスが返る事")
         @Test
+        @DisplayName("GETリクエストのレスポンスが返る事")
         fun findAll() {
-            given(mockCoinBoxService.findAll()).willReturn(CoinBox(100, 0, 0, 0, 0, 0, 120, 120, 120, 120, 120))
+            given(mockCoinBoxService.findAll()).willReturn(CoinBox(1660, 1, 1, 1, 1, 1, 120, 120, 120, 120, 120))
             mockMvc.perform(get("/api/coin-box"))
                 .andExpect(status().isOk)
-                .andExpect(jsonPath("deposit").value(100))
+                .andExpect(jsonPath("deposit").value(1660))
+                .andExpect(jsonPath("deposit10").value(1))
+                .andExpect(jsonPath("deposit50").value(1))
+                .andExpect(jsonPath("deposit100").value(1))
+                .andExpect(jsonPath("deposit500").value(1))
+                .andExpect(jsonPath("deposit1000").value(1))
                 .andExpect(jsonPath("left10").value(120))
                 .andExpect(jsonPath("left50").value(120))
                 .andExpect(jsonPath("left100").value(120))
@@ -49,18 +53,18 @@ internal class CoinBoxControllerTest {
     }
 
     @Nested
-    @DisplayName("update")
+    @DisplayName("updateのテスト")
     inner class Update {
 
-        @DisplayName("PUTリクエストのレスポンスが返る事")
         @Test
+        @DisplayName("PUTリクエストのレスポンスが返る事")
         fun update() {
-            given(mockCoinBoxService.update(CoinBox(120, 0, 0, 0, 0, 0, 122, 120, 121, 120, 120)))
+            given(mockCoinBoxService.update(CoinBox(120, 2, 0, 1, 0, 0, 122, 120, 121, 120, 120)))
                 .willReturn(
                     true
                 )
 
-            val requestBody = CoinBox(120, 0, 0, 0, 0, 0, 122, 120, 121, 120, 120)
+            val requestBody = CoinBox(120, 2, 0, 1, 0, 0, 122, 120, 121, 120, 120)
             val requestBodyJson = mapper.writeValueAsString(requestBody)
 
             mockMvc.perform(
@@ -69,6 +73,7 @@ internal class CoinBoxControllerTest {
                     .content(requestBodyJson)
             )
                 .andExpect(status().isOk)
+                .andExpect(content().string("true"))
         }
     }
 }
