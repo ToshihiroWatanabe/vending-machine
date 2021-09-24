@@ -1,11 +1,16 @@
 package app.vendingmachine.service
 
+import app.vendingmachine.mapper.CoinBoxMapper
+import app.vendingmachine.model.CoinBox
 import org.junit.jupiter.api.Assertions.assertArrayEquals
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.mock.mockito.MockBean
+import org.mockito.BDDMockito.given
 
 @SpringBootTest
 @DisplayName("CoinBoxServiceのテスト")
@@ -13,8 +18,20 @@ class CoinBoxServiceTest {
     @Autowired
     lateinit var coinBoxService: CoinBoxService
 
+    @MockBean
+    lateinit var mockCoinBoxMapper: CoinBoxMapper
+
+    @Test
+    @DisplayName("findAllのテスト")
+    fun findAll() {
+        given(mockCoinBoxMapper.findAll()).willReturn(
+            CoinBox(1660, 1, 1, 1, 1, 1, 120, 120, 120, 120, 120)
+        )
+        assertEquals(CoinBox(1660, 1, 1, 1, 1, 1, 120, 120, 120, 120, 120), coinBoxService.findAll())
+    }
+
     @Nested
-    @DisplayName("CalcChangeのテスト")
+    @DisplayName("calcChangeのテスト")
     inner class CalcChange {
         @Test
         @DisplayName("1000円を返却すると1000円札が1枚返る事")
