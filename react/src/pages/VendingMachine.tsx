@@ -137,8 +137,9 @@ const VendingMachine = () => {
       <hr />
       <CoinBoxTable
         coinBox={coinBox}
-        isAdjustButtonVisibled={false}
+        isButtonVisibled={false}
         onAdjustButtonClick={() => {}}
+        onWithdrawButtonClick={() => {}}
       />
       <Link to="/admin">管理画面へ</Link>
     </Fragment>

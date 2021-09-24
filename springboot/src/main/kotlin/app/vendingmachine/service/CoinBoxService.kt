@@ -116,4 +116,30 @@ class CoinBoxService @Autowired constructor(val coinBoxMapper: CoinBoxMapper) {
         coinBoxMapper.update(coinBox)
         return coinBoxMapper.findAll()
     }
+
+    /**
+     * 指定されたお金を回収します。
+     */
+    fun withdraw(money: Int): CoinBox {
+        var coinBox: CoinBox = coinBoxMapper.findAll()
+        when (money) {
+            10 -> {
+                coinBox.left10 = 0
+            }
+            50 -> {
+                coinBox.left50 = 0
+            }
+            100 -> {
+                coinBox.left100 = 0
+            }
+            500 -> {
+                coinBox.left500 = 0
+            }
+            1000 -> {
+                coinBox.left1000 = 0
+            }
+        }
+        coinBoxMapper.update(coinBox)
+        return coinBoxMapper.findAll()
+    }
 }

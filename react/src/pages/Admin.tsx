@@ -85,14 +85,24 @@ const Admin = () => {
     });
   };
 
+  /**
+   * お金の回収ボタンが押された時の処理です。
+   */
+  const onWithdrawButtonClick = (money: number) => {
+    CoinBoxService.withdraw(money).then((res) => {
+      setCoinBox(res.data);
+    });
+  };
+
   return (
     <Fragment>
       <h1>自動販売機アプリ - 管理画面</h1>
       <Link to="/">ホームに戻る</Link>
       <CoinBoxTable
         coinBox={coinBox}
-        isAdjustButtonVisibled={true}
+        isButtonVisibled={true}
         onAdjustButtonClick={onAdjustButtonClick}
+        onWithdrawButtonClick={onWithdrawButtonClick}
       />
       <StockTable stocks={stocks} onSupplyButtonClick={onSupplyButtonClick} />
       <h4>商品一覧</h4>

@@ -52,4 +52,12 @@ class CoinBoxController @Autowired constructor(val coinBoxService: CoinBoxServic
     fun adjust(@PathVariable money: Int): CoinBox {
         return coinBoxService.adjust(money)
     }
+
+    /**
+     * 指定されたお金を回収します。
+     */
+    @PostMapping("/withdraw/{money}")
+    fun withdraw(@PathVariable money: Int): CoinBox {
+        return coinBoxService.withdraw(money)
+    }
 }

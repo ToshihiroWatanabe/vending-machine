@@ -16,6 +16,10 @@ class CoinBoxService {
   adjust(money: number) {
     return http.post("/coin-box/adjust/" + money);
   }
+
+  withdraw(money: number) {
+    return http.post("/coin-box/withdraw/" + money);
+  }
 }
 
 export default new CoinBoxService();
