@@ -37,6 +37,9 @@ dependencies {
         exclude(module = "junit-vintage-engine")
         exclude(module = "mockito-core")
     }
+    testImplementation(platform("org.testcontainers:testcontainers-bom:1.16.0"))
+    testImplementation("org.testcontainers:mysql:1.16.0")
+    testImplementation("org.testcontainers:junit-jupiter:1.16.0")
 }
 
 tasks.withType<KotlinCompile> {
