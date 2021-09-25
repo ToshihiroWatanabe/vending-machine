@@ -6,11 +6,9 @@ import org.junit.jupiter.api.Test
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace
-import org.springframework.context.annotation.Import
 
 @MybatisTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
-@Import(CoinBoxMapper::class)
 @DisplayName("CoinBoxテーブルのマッパークラスのテスト")
 class CoinBoxMapperTest() {
 
