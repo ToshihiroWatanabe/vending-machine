@@ -4,6 +4,11 @@
 
 https://vending--machine.herokuapp.com/
 
+![購入画面](https://user-images.githubusercontent.com/79039863/134789659-69302ae7-49b7-42ec-8009-78fde60d3bd9.png)
+
+![管理画面](https://user-images.githubusercontent.com/79039863/134789668-d78b1ac3-08c9-4349-85ee-38049a45a440.png)
+
+
 # 仕様
 
 - 投入金額は10円～9990円
