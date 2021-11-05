@@ -14,7 +14,7 @@ services:
     ports:
       - "3307:3306"
 
-  db-testing:
+  db-test:
     image: mysql:8.0
     volumes:
       - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
@@ -22,10 +22,12 @@ services:
       - /var/lib/mysql
       - /var/log/mysql
     environment:
-      - MYSQL_DATABASE=vending_machine_db
+      - MYSQL_DATABASE=vending_machine_db_test
       - MYSQL_ROOT_USER=root
       - MYSQL_ROOT_PASSWORD=root
       - TZ=Asia/Tokyo
+    ports:
+      - "3308:3306"
 
 volumes:
   db-store:

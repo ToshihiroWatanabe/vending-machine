@@ -31,6 +31,10 @@ https://vending--machine.herokuapp.com/
 - MyBatis
 - MySQL
 
+# 動作環境
+
+- JDK 11
+
 # データベース
 
 テーブルを作成するSQLファイルはこちらです。
