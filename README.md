@@ -33,9 +33,21 @@ https://vending--machine.herokuapp.com/
 
 # 動作環境
 
+- node v14.16.1
+- npm 7.16.0
 - JDK 11
 
 # データベース
 
 テーブルを作成するSQLファイルはこちらです。
 [springboot/src/test/resources/schema.sql](springboot/src/test/resources/schema.sql)
+
+# 環境変数
+
+## 本番環境
+
+キー|説明
+---|---
+MYSQL_URL|jdbc:mysql://ホスト名:ポート/データベース名
+MYSQL_USERNAME|DBにログインするユーザー名
+MYSQL_PASSWORD|DBにログインするパスワード
