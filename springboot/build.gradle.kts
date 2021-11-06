@@ -23,6 +23,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0")
     implementation("org.springframework.boot:spring-boot-starter-security:2.5.6")
+    implementation("io.springfox:springfox-swagger2:2.9.2")
+    implementation("io.springfox:springfox-swagger-ui:2.9.2")
     developmentOnly("org.springframework.boot:spring-boot-devtools:2.5.6")
     runtimeOnly("mysql:mysql-connector-java:8.0.27")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")

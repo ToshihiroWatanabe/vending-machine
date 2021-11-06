@@ -18,19 +18,10 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     lateinit var corsClientUrls: List<String>
 
     override fun configure(http: HttpSecurity?) {
-        http
-            // ...
-            // 諸々の設定
-            // ...
-            ?.csrf()?.disable()
-            // ?.and()
-            ?.cors()
-            ?.configurationSource(getCorsConfigurationSource()) //CORS設定
+        http?.csrf()?.disable()?.cors()?.configurationSource(getCorsConfigurationSource()) // CORS設定
     }
 
-    /**
-     * CORS設定
-     */
+    /** CORS設定 */
     fun getCorsConfigurationSource(): CorsConfigurationSource {
 
         val corsConfiguration = CorsConfiguration()
