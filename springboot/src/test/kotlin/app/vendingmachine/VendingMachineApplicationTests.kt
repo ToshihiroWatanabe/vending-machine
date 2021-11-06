@@ -8,13 +8,5 @@ import org.springframework.test.context.TestPropertySource
 @TestPropertySource(locations = ["classpath:test.properties"])
 class VendingMachineApplicationTests {
 
-    @Test
-    fun contextLoads() {
-    }
-
-//	@Test
-//	fun fail(){
-//		assertEquals(1,2)
-//	}
-
+    @Test fun contextLoads() {}
 }
