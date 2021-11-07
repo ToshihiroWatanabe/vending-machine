@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { Stock } from "types/Stock";
 
 type Props = {
@@ -6,9 +5,13 @@ type Props = {
   onSupplyButtonClick: Function;
 };
 
+/**
+ * 在庫の表のコンポーネントです。
+ * @param props
+ */
 const StockTable = (props: Props) => {
   return (
-    <Fragment>
+    <>
       <h4>在庫</h4>
       <table>
         <thead>
@@ -46,7 +49,7 @@ const StockTable = (props: Props) => {
           })}
         </tbody>
       </table>
-    </Fragment>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import CoinBoxTable from "components/CoinBoxTable";
 import StockTable from "components/StockTable";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CoinBoxService from "services/CoinBox.service";
 import ProductService from "services/Product.service";
@@ -22,6 +22,10 @@ type SalesHistory = {
   purchaseTime: string;
   productId: string;
 };
+
+/**
+ * 管理画面のコンポーネントです。
+ */
 
 const Admin = () => {
   const [products, setProducts] = useState<Product[]>();
@@ -95,7 +99,7 @@ const Admin = () => {
   };
 
   return (
-    <Fragment>
+    <>
       <h1>自動販売機アプリ - 管理画面</h1>
       <Link to="/">ホームに戻る</Link>
       <CoinBoxTable
@@ -160,7 +164,7 @@ const Admin = () => {
           </tbody>
         </table>
       </details>
-    </Fragment>
+    </>
   );
 };
 

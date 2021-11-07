@@ -7,6 +7,11 @@ import PurchaseService from "services/Purchase.service";
 import CoinBoxTable from "components/CoinBoxTable";
 import { Link } from "react-router-dom";
 
+const coins = [10, 50, 100, 500];
+
+/**
+ * 自動販売機ページのコンポーネントです。
+ */
 const VendingMachine = () => {
   const [coinBox, setCoinBox] = useState<CoinBox>({
     deposit: 0,
@@ -41,18 +46,29 @@ const VendingMachine = () => {
     });
   }, []);
 
+  /**
+   * お金を投入するボタンがクリックされた時の処理です。
+   * @param value 投入するお金
+   */
   const onInsertButtonClick = (value: number) => {
     CoinBoxService.insert(value).then((res: any) => {
       setCoinBox(res.data);
     });
   };
 
+  /**
+   * お釣りを返却するボタンがクリックされた時の処理です。
+   */
   const onReleaseButtonClick = () => {
     CoinBoxService.release().then((res: any) => {
       setCoinBox(res.data);
     });
   };
 
+  /**
+   * 購入ボタンがクリックされた時の処理です。
+   * @param id
+   */
   const onPurchaseButtonClick = (id: number) => {
     PurchaseService.post(id).then((res: any) => {
       // 情報を更新
@@ -66,7 +82,7 @@ const VendingMachine = () => {
   };
 
   return (
-    <Fragment>
+    <>
       <h1>自動販売機アプリ</h1>
       {stocks.map((stock) => {
         return (
@@ -91,34 +107,18 @@ const VendingMachine = () => {
       })}
       <p>投入金額: {coinBox?.deposit}円</p>
       <div>
-        <button
-          onClick={() => {
-            onInsertButtonClick(10);
-          }}
-        >
-          10円玉を入れる
-        </button>
-        <button
-          onClick={() => {
-            onInsertButtonClick(50);
-          }}
-        >
-          50円玉を入れる
-        </button>
-        <button
-          onClick={() => {
-            onInsertButtonClick(100);
-          }}
-        >
-          100円玉を入れる
-        </button>
-        <button
-          onClick={() => {
-            onInsertButtonClick(500);
-          }}
-        >
-          500円玉を入れる
-        </button>
+        {coins.map((coin) => {
+          return (
+            <button
+              key={coin}
+              onClick={() => {
+                onInsertButtonClick(coin);
+              }}
+            >
+              {coin}円玉を入れる
+            </button>
+          );
+        })}
         <button
           onClick={() => {
             onInsertButtonClick(1000);
@@ -142,7 +142,7 @@ const VendingMachine = () => {
         onWithdrawButtonClick={() => {}}
       />
       <Link to="/admin">管理画面へ</Link>
-    </Fragment>
+    </>
   );
 };
 

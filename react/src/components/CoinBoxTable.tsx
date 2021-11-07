@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { CoinBox } from "types/CoinBox";
 
 type Props = {
@@ -8,121 +7,56 @@ type Props = {
   onWithdrawButtonClick: Function;
 };
 
+const coins = [10, 50, 100, 500];
+
+/**
+ * お金の表のコンポーネントです。
+ * @param props
+ */
 const CoinBoxTable = (props: Props) => {
   return (
-    <Fragment>
+    <>
       <h4>自動販売機の中のお金</h4>
       <table>
         <tbody>
-          <tr>
-            <th>10円玉</th>
-            <th>{props.coinBox?.left10}枚</th>
-            {props.isButtonVisibled && (
-              <Fragment>
+          {coins.map((coin) => {
+            return (
+              <tr key={coin}>
+                <th>{coin}円玉</th>
                 <th>
-                  <button
-                    onClick={() => {
-                      props.onAdjustButtonClick(10);
-                    }}
-                  >
-                    調整
-                  </button>
+                  {/* @ts-ignore */}
+                  {props.coinBox ? props.coinBox["left" + coin] + "枚" : ""}
                 </th>
-                <th>
-                  <button
-                    onClick={() => {
-                      props.onWithdrawButtonClick(10);
-                    }}
-                  >
-                    回収
-                  </button>
-                </th>
-              </Fragment>
-            )}
-          </tr>
-          <tr>
-            <th>50円玉</th>
-            <th>{props.coinBox?.left50}枚</th>
-            {props.isButtonVisibled && (
-              <Fragment>
-                <th>
-                  <button
-                    onClick={() => {
-                      props.onAdjustButtonClick(50);
-                    }}
-                  >
-                    調整
-                  </button>
-                </th>
-                <th>
-                  <button
-                    onClick={() => {
-                      props.onWithdrawButtonClick(50);
-                    }}
-                  >
-                    回収
-                  </button>
-                </th>
-              </Fragment>
-            )}
-          </tr>
-          <tr>
-            <th>100円玉</th>
-            <th>{props.coinBox?.left100}枚</th>
-            {props.isButtonVisibled && (
-              <Fragment>
-                <th>
-                  <button
-                    onClick={() => {
-                      props.onAdjustButtonClick(100);
-                    }}
-                  >
-                    調整
-                  </button>
-                </th>
-                <th>
-                  <button
-                    onClick={() => {
-                      props.onWithdrawButtonClick(100);
-                    }}
-                  >
-                    回収
-                  </button>
-                </th>
-              </Fragment>
-            )}
-          </tr>
-          <tr>
-            <th>500円玉</th>
-            <th>{props.coinBox?.left500}枚</th>
-            {props.isButtonVisibled && (
-              <Fragment>
-                <th>
-                  <button
-                    onClick={() => {
-                      props.onAdjustButtonClick(500);
-                    }}
-                  >
-                    調整
-                  </button>
-                </th>
-                <th>
-                  <button
-                    onClick={() => {
-                      props.onWithdrawButtonClick(500);
-                    }}
-                  >
-                    回収
-                  </button>
-                </th>
-              </Fragment>
-            )}
-          </tr>
+                {props.isButtonVisibled && (
+                  <>
+                    <th>
+                      <button
+                        onClick={() => {
+                          props.onAdjustButtonClick(coin);
+                        }}
+                      >
+                        調整
+                      </button>
+                    </th>
+                    <th>
+                      <button
+                        onClick={() => {
+                          props.onWithdrawButtonClick(coin);
+                        }}
+                      >
+                        回収
+                      </button>
+                    </th>
+                  </>
+                )}
+              </tr>
+            );
+          })}
           <tr>
             <th>1000円札</th>
             <th>{props.coinBox?.left1000}枚</th>
             {props.isButtonVisibled && (
-              <Fragment>
+              <>
                 <th></th>
                 <th>
                   <button
@@ -133,12 +67,12 @@ const CoinBoxTable = (props: Props) => {
                     回収
                   </button>
                 </th>
-              </Fragment>
+              </>
             )}
           </tr>
         </tbody>
       </table>
-    </Fragment>
+    </>
   );
 };
 
