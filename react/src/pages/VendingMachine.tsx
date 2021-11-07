@@ -81,6 +81,32 @@ const VendingMachine = () => {
     });
   };
 
+  /**
+   * 購入可能かどうかを判定します。
+   * @returns 購入可能ならtrue
+   */
+  const isPurchasable = (stock: Stock) => {
+    // 数量が0以下ならfalse
+    if (stock.quantity <= 0) return false;
+    // 投入金額が価格未満ならfalse
+    if (coinBox?.deposit < stock.price) return false;
+    /** 残り投入金額 */
+    let left = coinBox?.deposit - stock.price;
+    const remainings = {};
+    [1000, 500, 100, 50, 10].forEach((money) => {
+      // @ts-ignore
+      remainings[money] = coinBox["left" + money];
+      while (left >= money) {
+        // @ts-ignore
+        if (remainings[money] <= 0) break;
+        // @ts-ignore
+        remainings[money]--;
+        left -= money;
+      }
+    });
+    return left === 0;
+  };
+
   return (
     <>
       <h1>自動販売機アプリ</h1>
@@ -91,7 +117,7 @@ const VendingMachine = () => {
             onClick={() => {
               onPurchaseButtonClick(stock.id);
             }}
-            disabled={stock.price > coinBox?.deposit || stock.quantity <= 0}
+            disabled={!isPurchasable(stock)}
           >
             {stock.name}
             <br />
