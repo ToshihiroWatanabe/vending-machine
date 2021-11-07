@@ -45,8 +45,15 @@ https://vending--machine.herokuapp.com/
 
 # データベース
 
+DockerでMySQLのデータベースを作成できます。
+```
+docker-compose up
+```
+
 テーブルを作成するSQLファイルはこちらです。
 [springboot/src/test/resources/schema.sql](springboot/src/test/resources/schema.sql)
+初期データはこちらです。
+[springboot/src/test/resources/data.sql](springboot/src/test/resources/data.sql)
 
 # 環境変数
 
