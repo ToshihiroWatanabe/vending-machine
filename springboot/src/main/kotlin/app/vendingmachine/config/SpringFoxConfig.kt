@@ -35,7 +35,7 @@ class SpringFoxConfig {
     fun apiinfo(): ApiInfo =
             ApiInfoBuilder()
                     .title("Vending Machine API")
-                    .description("自動販売機を扱うためのAPIです")
+                    .description("自動販売機を扱うためのAPIです。")
                     .version("1.0.0")
                     // .contact(
                     //         Contact(
