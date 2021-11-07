@@ -1,6 +1,6 @@
 import { CoinBox } from "types/CoinBox";
 import { Stock } from "types/Stock";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CoinBoxService from "services/CoinBox.service";
 import StockService from "services/Stock.service";
 import PurchaseService from "services/Purchase.service";
