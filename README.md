@@ -1,6 +1,8 @@
 # vending-machine
 
-自動販売機をWebアプリで再現してみました。
+自動販売機の処理をWebアプリで再現してみました。
+
+お金を入れるボタンを押してから、商品ボタンを押すと購入できます。
 
 https://vending--machine.herokuapp.com/
 
@@ -9,17 +11,20 @@ https://vending--machine.herokuapp.com/
 ![管理画面](https://user-images.githubusercontent.com/79039863/134789668-d78b1ac3-08c9-4349-85ee-38049a45a440.png)
 
 
-# APIドキュメント
+# API仕様書
+
+以下のURLから、Swagger UIのページにアクセスできます。
 
 (本番環境)https://vending--machine.herokuapp.com/swagger-ui.html
 
 (開発環境)http://localhost:8080/swagger-ui.html
 
-# 主な仕様
+# 購入時の仕様
 
 - 使えるお金は10円玉、50円玉、100円玉、500円玉、1000円札
 - 投入金額の合計は9990円まで
-- 同一の硬貨は一度に20枚までしか投入できない(**通貨の単位及び貨幣の発行等に関する法律**に準拠)
+- 同一の硬貨は一度に20枚までしか投入できない
+- 購入後に釣り銭が足りなくなる場合、その商品は購入できない
 
 
 # 使用技術
