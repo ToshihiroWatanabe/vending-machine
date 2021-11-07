@@ -1,1 +1,1 @@
-web: java -jar build/libs/vending-machine-0.0.1.jar --server.port=$PORT --args='--spring.profiles.active=production'
+web: java -jar build/libs/vending-machine-1.0.0.jar --server.port=$PORT --args='--spring.profiles.active=production'

@@ -1,9 +1,12 @@
 package app.vendingmachine.model
 
+import io.swagger.annotations.ApiModelProperty
+
 /**
  *　投入金額とお釣り用のお金
  */
 data class CoinBox(
+    @ApiModelProperty(value = "投入金額", required = true)
     var deposit: Int,
     var deposit10: Int,
     var deposit50: Int,
