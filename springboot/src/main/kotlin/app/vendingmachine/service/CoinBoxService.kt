@@ -52,6 +52,27 @@ class CoinBoxService @Autowired constructor(val coinBoxMapper: CoinBoxMapper) {
         return coinBoxMapper.findAll()
     }
 
+    /** お釣りの金額とお金の残り枚数から、排出する硬貨や紙幣の枚数を計算します。 できるだけ枚数が少なくなるようにします。 */
+    fun calcChange(coinBox: CoinBox): Array<Int> {
+        var moneyCounts = arrayOf<Int>()
+        var left = coinBox.deposit
+        val remainings =
+                arrayOf<Int>(
+                        coinBox.left1000,
+                        coinBox.left500,
+                        coinBox.left100,
+                        coinBox.left50,
+                        coinBox.left10
+                )
+        for ((index, money) in arrayOf(1000, 500, 100, 50, 10).withIndex()) {
+            var count = left / money
+            if (count > remainings[index]) count = remainings[index]
+            moneyCounts += count
+            left -= money * count
+        }
+        return moneyCounts
+    }
+
     /** お釣りを返却します。 */
     fun release(): Boolean {
         var coinBox: CoinBox = coinBoxMapper.findAll()
@@ -62,29 +83,16 @@ class CoinBoxService @Autowired constructor(val coinBoxMapper: CoinBoxMapper) {
                         coinBox.deposit500 == 0 &&
                         coinBox.deposit1000 == 0
         ) {
-            val coinCount: Array<Int> = calcChange(coinBox.deposit)
+            val moneyCounts: Array<Int> = calcChange(coinBox)
             coinBox.deposit = 0
-            coinBox.left1000 -= coinCount[0]
-            coinBox.left500 -= coinCount[1]
-            coinBox.left100 -= coinCount[2]
-            coinBox.left50 -= coinCount[3]
-            coinBox.left10 -= coinCount[4]
+            coinBox.left1000 -= moneyCounts[0]
+            coinBox.left500 -= moneyCounts[1]
+            coinBox.left100 -= moneyCounts[2]
+            coinBox.left50 -= moneyCounts[3]
+            coinBox.left10 -= moneyCounts[4]
             return update(coinBox)
         }
         return coinBoxMapper.release()
-    }
-
-    /** お釣りの金額から硬貨や紙幣の枚数を計算します。 できるだけ枚数が少なくなるようにします。 */
-    fun calcChange(change: Int): Array<Int> {
-        val moneyList = listOf(1000, 500, 100, 50, 10)
-        var moneyCount: Array<Int> = arrayOf()
-        var changeLeft = change
-        moneyList.forEach { money ->
-            val changeMoney = changeLeft / money
-            moneyCount += changeMoney
-            changeLeft %= money
-        }
-        return moneyCount
     }
 
     /** 指定されたお金の残り枚数を調整します。 */
