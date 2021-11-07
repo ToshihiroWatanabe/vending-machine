@@ -36,7 +36,7 @@ class SalesHistoryController @Autowired constructor(val salesHistoryService: Sal
     fun delete(@ApiParam(value = "削除する販売履歴のID", required = true) @RequestBody id: String): Boolean {
         return salesHistoryService.delete(id)
     }
-    
+
     @ApiOperation(value = "販売履歴全件削除", notes = "全ての販売履歴を削除します。")
     @DeleteMapping("/delete-all")
     fun deleteAll(): Boolean {

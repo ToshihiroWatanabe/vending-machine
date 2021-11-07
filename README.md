@@ -9,6 +9,12 @@ https://vending--machine.herokuapp.com/
 ![管理画面](https://user-images.githubusercontent.com/79039863/134789668-d78b1ac3-08c9-4349-85ee-38049a45a440.png)
 
 
+# APIドキュメント
+
+(本番環境)https://vending--machine.herokuapp.com/swagger-ui.html
+
+(開発環境)http://localhost:8080/swagger-ui.html
+
 # 仕様
 
 - 投入金額は10円～9990円

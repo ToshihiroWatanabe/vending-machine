@@ -37,7 +37,7 @@ class StockController @Autowired constructor(val stockService: StockService) {
     fun delete(@ApiParam(value = "削除する在庫データのID", required = true) @RequestBody id: Int): Boolean {
         return stockService.delete(id)
     }
-    
+
     @ApiOperation(value = "在庫補充", notes = "在庫を補充します。")
     @PostMapping("/supply/{id}")
     fun supply(@ApiParam(value = "在庫ID", required = true) @PathVariable id: Int, @ApiParam(value = "増分", required = true) @RequestBody increment: Int): Boolean {
