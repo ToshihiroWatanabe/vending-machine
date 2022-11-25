@@ -4,8 +4,6 @@
 
 お金を入れるボタンを押してから、商品ボタンを押すと購入できます。
 
-https://vending--machine.herokuapp.com/
-
 ![購入画面](https://user-images.githubusercontent.com/79039863/134789659-69302ae7-49b7-42ec-8009-78fde60d3bd9.png)
 
 ![管理画面](https://user-images.githubusercontent.com/79039863/134789668-d78b1ac3-08c9-4349-85ee-38049a45a440.png)
@@ -14,8 +12,6 @@ https://vending--machine.herokuapp.com/
 # API仕様書
 
 以下のURLから、Swagger UIのページにアクセスできます。
-
-(本番環境)https://vending--machine.herokuapp.com/swagger-ui.html
 
 (開発環境)http://localhost:8080/swagger-ui.html
 
